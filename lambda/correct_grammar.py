@@ -10,7 +10,13 @@ def handler(event, context):
         if event["queryStringParameters"]:
             input = event["queryStringParameters"]["input"]
             if input:
-                response = get_correct_grammar_in_bedrock(input)
+                output_text = get_correct_grammar_in_bedrock(input)
+                response = {
+                    "statusCode": 200,
+                    "body": json.dumps({
+                        output_text: output_text
+                    })
+                }
 
     print(f"response = {response}")
     return response

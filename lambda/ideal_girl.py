@@ -14,7 +14,12 @@ def handler(event, context):
                 style_preset = event["queryStringParameters"]["style_preset"] if "style_preset" in event["queryStringParameters"] else "photographic"
                 base64_image = get_ideal_girl_in_bedrock(input, style_preset)
                 if base64_image:
-                    response = base64_image
+                    response = {
+                        "statusCode": 200,
+                        "body": json.dumps({
+                            base64_image: base64_image
+                        })
+                    }
 
     print(f"response = {response}")
     return response
