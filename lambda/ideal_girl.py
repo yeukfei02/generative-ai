@@ -11,7 +11,7 @@ def handler(event, context):
         if event["queryStringParameters"]:
             input = event["queryStringParameters"]["input"]
             if input:
-                style_preset = event["queryStringParameters"]["style_preset"]
+                style_preset = event["queryStringParameters"]["style_preset"] if "style_preset" in event["queryStringParameters"] else "photographic"
                 base64_image = get_ideal_girl_in_bedrock(input, style_preset)
                 if base64_image:
                     response = base64_image
@@ -120,7 +120,7 @@ def get_ideal_girl_in_bedrock(input, style_preset):
             "height": 1152,
             "seed": 0,
             "steps": 50,
-            "style_preset": style_preset if style_preset else "photographic"
+            "style_preset": style_preset
         })
 
         response = client.invoke_model(

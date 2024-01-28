@@ -45,7 +45,10 @@ def get_correct_grammar_in_bedrock(input):
         print(f"response_body_error = {response_body_error}")
 
         if response_body_error is None:
-            result = response_body
+            results = response_body["results"]
+            if results:
+                outputText = results[0]["outputText"]
+                result = outputText
         else:
             raise RuntimeError(f"response_body_error = {response_body_error}")
         
