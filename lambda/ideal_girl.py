@@ -16,6 +16,7 @@ def handler(event, context):
                 if base64_image:
                     response = base64_image
 
+    print(f"response = {response}")
     return response
 
 def get_ideal_girl_in_bedrock(input, style_preset):
@@ -138,7 +139,7 @@ def get_ideal_girl_in_bedrock(input, style_preset):
         print(f"response_body_result = {response_body_result}")
 
         base64_image = response_body.get("artifacts")[0].get("base64")
-        print(f"base64_image = {base64_image}")
+        # print(f"base64_image = {base64_image}")
 
         finish_reason = response_body.get("artifacts")[0].get("finishReason")
 

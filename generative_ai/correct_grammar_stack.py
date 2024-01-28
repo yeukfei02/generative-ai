@@ -50,7 +50,7 @@ class CorrectGrammarStack(Stack):
             code=_lambda.Code.from_asset("lambda"),
             handler="correct_grammar.handler",
             architecture=_lambda.Architecture.ARM_64,
-            timeout=Duration.minutes(3),
+            timeout=Duration.minutes(5),
             tracing=_lambda.Tracing.ACTIVE,
             layers=[lambda_layer],
             environment={

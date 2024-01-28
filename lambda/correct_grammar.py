@@ -12,10 +12,11 @@ def handler(event, context):
             if input:
                 response = get_correct_grammar_in_bedrock(input)
 
+    print(f"response = {response}")
     return response
 
 def get_correct_grammar_in_bedrock(input):
-    result = None
+    result = ""
 
     try:
         client = boto3.client(service_name='bedrock-runtime')
@@ -47,8 +48,9 @@ def get_correct_grammar_in_bedrock(input):
         if response_body_error is None:
             results = response_body["results"]
             if results:
-                outputText = results[0]["outputText"]
-                result = outputText
+                for item in results:
+                    output_text = item["outputText"]
+                    result += output_text
         else:
             raise RuntimeError(f"response_body_error = {response_body_error}")
         
