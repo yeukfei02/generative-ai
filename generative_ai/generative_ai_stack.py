@@ -14,6 +14,8 @@ class GenerativeAiStack(Stack):
 
         env = get_env()
 
+        # CorrectGrammarStack
         CorrectGrammarStack(self, "CorrectGrammarStack", stack_name="correct-grammar-stack", env=env)
 
+        # IdealGirlStack
         IdealGirlStack(self, "IdealGirlStack", stack_name="ideal-girl-stack", env=env)
