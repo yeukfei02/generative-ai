@@ -7,18 +7,21 @@ def handler(event, context):
     response = None
 
     if event:
-        response = get_correct_grammar_in_bedrock(event)
+        if event["queryStringParameters"]:
+            input = event["queryStringParameters"]["input"]
+            if input:
+                response = get_correct_grammar_in_bedrock(input)
 
     return response
 
-def get_correct_grammar_in_bedrock(event):
+def get_correct_grammar_in_bedrock(input):
     result = None
 
     try:
         client = boto3.client(service_name='bedrock-runtime')
 
         body = {
-            "inputText": f"Check and correct the grammar of the below text or sentence or paragraph: ",
+            "inputText": f"Check and correct the grammar of the below text: {input}",
             "textGenerationConfig": {
                 "temperature": 0,  
                 "topP": 0.9,
