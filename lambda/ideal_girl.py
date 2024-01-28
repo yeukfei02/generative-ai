@@ -35,9 +35,6 @@ def get_ideal_girl_in_bedrock(input, style_preset):
     try:
         client = boto3.client(service_name='bedrock-runtime')
 
-        # random_seed = get_random_seed()
-        # print(f"random_seed = {random_seed}")
-
         negative_prompts = [
             "out of frame", 
             "close up", 
@@ -127,8 +124,9 @@ def get_ideal_girl_in_bedrock(input, style_preset):
                 [{ "text": input, "weight": 1.0 }]
                 + [{ "text": negative_prompt, "weight": -1.0 } for negative_prompt in negative_prompts]
             ),
-            "width": 896,
-            "height": 1152,
+            "width": 832,
+            "height": 1216,
+            "cfg_scale": 7,
             "seed": 0,
             "steps": 50,
             "style_preset": style_preset
@@ -162,7 +160,3 @@ def get_ideal_girl_in_bedrock(input, style_preset):
         print(f"get_ideal_girl_in_bedrock error = {e}")
     
     return result
-
-def get_random_seed():
-    random_seed = randrange(100)
-    return random_seed
