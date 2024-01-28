@@ -4,7 +4,12 @@ import json
 def handler(event, context):
     print(f"event = {event}")
 
-    response = None
+    response = {
+        "statusCode": 200,
+        "body": json.dumps({
+            "output_text": ""
+        })
+    }
 
     if event:
         if event["queryStringParameters"]:
@@ -14,7 +19,7 @@ def handler(event, context):
                 response = {
                     "statusCode": 200,
                     "body": json.dumps({
-                        output_text: output_text
+                        "output_text": output_text
                     })
                 }
 
