@@ -7,11 +7,11 @@ def handler(event, context):
     response = None
 
     if event:
-        response = correct_grammar(event)
+        response = get_correct_grammar_in_bedrock(event)
 
     return response
 
-def correct_grammar(event):
+def get_correct_grammar_in_bedrock(event):
     result = None
 
     try:
@@ -47,6 +47,6 @@ def correct_grammar(event):
             raise RuntimeError(f"response_body_error = {response_body_error}")
         
     except Exception as e:
-        print(f"correct_grammar error = {e}")
+        print(f"get_correct_grammar_in_bedrock error = {e}")
     
     return result
