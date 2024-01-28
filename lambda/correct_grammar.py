@@ -18,7 +18,7 @@ def correct_grammar(event):
         client = boto3.client('bedrock-runtime')
 
         body = {
-            "inputText": f"Check and correct the below text grammar: ",
+            "inputText": f"Check and correct the grammar of the below text or sentence or paragraph: ",
             "textGenerationConfig": {
                 "temperature": 0,  
                 "topP": 0.9,
@@ -41,7 +41,7 @@ def correct_grammar(event):
         response_body_error = response_body.get("error")
         print(f"response_body_error = {response_body_error}")
 
-        if not response_body_error and response_body_error is None:
+        if not response_body_error:
             result = response_body
         else:
             raise RuntimeError(f"response_body_error = {response_body_error}")
