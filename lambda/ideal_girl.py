@@ -127,8 +127,8 @@ def get_ideal_girl_in_bedrock(input, style_preset):
                 [{ "text": input, "weight": 1.0 }]
                 + [{ "text": negative_prompt, "weight": -1.0 } for negative_prompt in negative_prompts]
             ),
-            "width": 896,
-            "height": 1152,
+            "width": 832,
+            "height": 1216,
             "seed": 0,
             "steps": 50,
             "style_preset": style_preset
