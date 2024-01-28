@@ -111,7 +111,7 @@ def get_ideal_girl_in_bedrock(input, style_preset):
             "extra hands"
         ]
 
-        body = {
+        body = json.dumps({
             "text_prompts": (
                 [{ "text": input, "weight": 1.0 }]
                 + [{ "text": negative_prompt, "weight": -1.0 } for negative_prompt in negative_prompts]
@@ -121,7 +121,7 @@ def get_ideal_girl_in_bedrock(input, style_preset):
             "seed": 0,
             "steps": 50,
             "style_preset": style_preset if style_preset else "photographic"
-        }
+        })
 
         response = client.invoke_model(
             body=body, 

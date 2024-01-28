@@ -20,7 +20,7 @@ def get_correct_grammar_in_bedrock(input):
     try:
         client = boto3.client(service_name='bedrock-runtime')
 
-        body = {
+        body = json.dumps({
             "inputText": f"Check and correct the grammar of the below text: {input}",
             "textGenerationConfig": {
                 "temperature": 0,  
@@ -28,7 +28,7 @@ def get_correct_grammar_in_bedrock(input):
                 "maxTokenCount": 1000,
                 "stopSequences": []
             }
-        }
+        })
 
         response = client.invoke_model(
             body=body, 
