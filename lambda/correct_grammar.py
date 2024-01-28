@@ -33,7 +33,7 @@ def get_correct_grammar_in_bedrock(input):
         client = boto3.client(service_name='bedrock-runtime')
 
         body = json.dumps({
-            "inputText": f"Check and correct the grammar of the below text: {input}",
+            "inputText": f"Check and correct the grammar of the following text: {input}",
             "textGenerationConfig": {
                 "temperature": 0,  
                 "topP": 0.9,
