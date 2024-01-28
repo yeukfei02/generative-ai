@@ -17,7 +17,7 @@ def handler(event, context):
             print(f"image = {image}")
 
             response = image
-            
+
             image.show()
 
     return response
@@ -26,7 +26,7 @@ def get_ideal_girl_in_bedrock(event):
     result = None
 
     try:
-        client = boto3.client('bedrock-runtime')
+        client = boto3.client(service_name='bedrock-runtime')
 
         # random_seed = get_random_seed()
         # print(f"random_seed = {random_seed}")

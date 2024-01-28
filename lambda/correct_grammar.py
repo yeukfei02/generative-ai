@@ -15,7 +15,7 @@ def get_correct_grammar_in_bedrock(event):
     result = None
 
     try:
-        client = boto3.client('bedrock-runtime')
+        client = boto3.client(service_name='bedrock-runtime')
 
         body = {
             "inputText": f"Check and correct the grammar of the below text or sentence or paragraph: ",
