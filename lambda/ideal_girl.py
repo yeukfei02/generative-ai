@@ -1,7 +1,6 @@
 import boto3
 import json
 from random import randrange
-from PIL import Image
 
 def handler(event, context):
     print(f"event = {event}")
