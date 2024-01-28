@@ -34,7 +34,7 @@ class CorrectGrammarStack(Stack):
             self,
             "GenerativeAICorrectGrammarLambdaLayer",
             code=_lambda.Code.from_asset("lambda/layer"),
-            compatible_runtimes=[_lambda.Runtime.PYTHON_3_11],
+            compatible_runtimes=[_lambda.Runtime.PYTHON_3_12],
             compatible_architectures=[_lambda.Architecture.ARM_64],
             removal_policy=RemovalPolicy.RETAIN,
         )
@@ -45,7 +45,7 @@ class CorrectGrammarStack(Stack):
             self,
             "GenerativeAICorrectGrammarLambdaFunc",
             function_name="generative-ai-correct-grammar",
-            runtime=_lambda.Runtime.PYTHON_3_11,
+            runtime=_lambda.Runtime.PYTHON_3_12,
             memory_size=1000,
             code=_lambda.Code.from_asset("lambda"),
             handler="correct_grammar.handler",

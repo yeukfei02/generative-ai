@@ -8,7 +8,7 @@ api url: <>
 
 ## Requirement
 
-- install python (v3.11.6)
+- install python (v3.12.1)
 - install cdk-cli
 
 The cdk.json file tells the CDK Toolkit how to execute your app.
