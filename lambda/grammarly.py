@@ -37,7 +37,7 @@ def generate_text_in_bedrock(input):
             "textGenerationConfig": {
                 "temperature": 0,  
                 "topP": 0.9,
-                "maxTokenCount": 1000,
+                "maxTokenCount": 2000,
                 "stopSequences": []
             }
         })

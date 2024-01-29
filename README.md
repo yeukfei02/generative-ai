@@ -69,3 +69,13 @@ $ cdk destroy --all
 // check more command
 $ cdk --help
 ```
+
+```zsh
+// open grammarly web
+$ cd web
+$ streamlit run grammarly.py
+
+// open ideal girl web
+$ cd web
+$ streamlit run ideal_girl.py
+```
