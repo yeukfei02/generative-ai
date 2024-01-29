@@ -15,7 +15,7 @@ def handler(event, context):
         if event["queryStringParameters"]:
             input = event["queryStringParameters"]["input"]
             if input:
-                output_text = get_correct_grammar_in_bedrock(input)
+                output_text = generate_text_in_bedrock(input)
                 response = {
                     "statusCode": 200,
                     "body": json.dumps({
@@ -26,14 +26,14 @@ def handler(event, context):
     print(f"response = {response}")
     return response
 
-def get_correct_grammar_in_bedrock(input):
+def generate_text_in_bedrock(input):
     result = ""
 
     try:
         client = boto3.client(service_name='bedrock-runtime')
 
         body = json.dumps({
-            "inputText": f"Check and correct the grammar of the following text: {input}",
+            "inputText": f"Check, format and correct the grammar of the following text: {input}",
             "textGenerationConfig": {
                 "temperature": 0,  
                 "topP": 0.9,
@@ -66,6 +66,6 @@ def get_correct_grammar_in_bedrock(input):
             raise RuntimeError(f"response_body_error = {response_body_error}")
         
     except Exception as e:
-        print(f"get_correct_grammar_in_bedrock error = {e}")
+        print(f"generate_text_in_bedrock error = {e}")
     
     return result

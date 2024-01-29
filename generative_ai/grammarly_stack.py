@@ -11,7 +11,7 @@ from aws_cdk.aws_iam import (
 )
 
 
-class CorrectGrammarStack(Stack):
+class GrammarlyStack(Stack):
 
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
@@ -32,7 +32,7 @@ class CorrectGrammarStack(Stack):
     def create_lambda_layer(self):
         lambda_layer = _lambda.LayerVersion(
             self,
-            "GenerativeAICorrectGrammarLambdaLayer",
+            "GenerativeAIGrammarlyLambdaLayer",
             code=_lambda.Code.from_asset("lambda/layer"),
             compatible_runtimes=[_lambda.Runtime.PYTHON_3_12],
             compatible_architectures=[_lambda.Architecture.ARM_64],
@@ -43,12 +43,12 @@ class CorrectGrammarStack(Stack):
     def create_lambda(self, lambda_layer):
         lambda_func = _lambda.Function(
             self,
-            "GenerativeAICorrectGrammarLambdaFunc",
-            function_name="generative-ai-correct-grammar",
+            "GenerativeAIGrammarlyLambdaFunc",
+            function_name="generative-ai-grammarly",
             runtime=_lambda.Runtime.PYTHON_3_12,
             memory_size=1000,
             code=_lambda.Code.from_asset("lambda"),
-            handler="correct_grammar.handler",
+            handler="grammarly.handler",
             architecture=_lambda.Architecture.ARM_64,
             timeout=Duration.minutes(5),
             tracing=_lambda.Tracing.ACTIVE,
@@ -67,7 +67,7 @@ class CorrectGrammarStack(Stack):
     def create_api_gateway(self, lambda_func):
         api_gateway = _apigateway.LambdaRestApi(
             self,
-            "GenerativeAICorrectGrammarApiGateway",
+            "GenerativeAIGrammarlyApiGateway",
             handler=lambda_func,
             default_cors_preflight_options=_apigateway.CorsOptions(
                 allow_origins=_apigateway.Cors.ALL_ORIGINS,
@@ -87,5 +87,5 @@ class CorrectGrammarStack(Stack):
         api = api_gateway.root.add_resource("generative-ai")
         api.add_method("GET") # GET /generative-ai
 
-        correct_grammar = api.add_resource("correct-grammar")
-        correct_grammar.add_method("GET") # GET /generative-ai/correct-grammar
+        grammarly = api.add_resource("grammarly")
+        grammarly.add_method("GET") # GET /generative-ai/grammarly

@@ -2,7 +2,7 @@ from constructs import Construct
 from aws_cdk import (
     Stack
 )
-from generative_ai.correct_grammar_stack import CorrectGrammarStack
+from generative_ai.grammarly_stack import GrammarlyStack
 from generative_ai.ideal_girl_stack import IdealGirlStack
 from helper.helper import get_env
 
@@ -14,8 +14,8 @@ class GenerativeAiStack(Stack):
 
         env = get_env()
 
-        # CorrectGrammarStack
-        CorrectGrammarStack(self, "CorrectGrammarStack", stack_name="correct-grammar-stack", env=env)
+        # GrammarlyStack
+        GrammarlyStack(self, "GrammarlyStack", stack_name="grammarly-stack", env=env)
 
         # IdealGirlStack
         IdealGirlStack(self, "IdealGirlStack", stack_name="ideal-girl-stack", env=env)
