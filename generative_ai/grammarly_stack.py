@@ -9,6 +9,7 @@ from aws_cdk import (
 from aws_cdk.aws_iam import (
     ManagedPolicy
 )
+import os
 
 
 class GrammarlyStack(Stack):
@@ -54,7 +55,7 @@ class GrammarlyStack(Stack):
             tracing=_lambda.Tracing.ACTIVE,
             layers=[lambda_layer],
             environment={
-                "PYTHON_ENV": "production",
+                "PYTHON_ENV": os.getenv("PYTHON_ENV"),
             },
         )
 
