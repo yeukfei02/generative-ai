@@ -119,6 +119,8 @@ def generate_image_in_bedrock(input, style_preset):
             "extra hands"
         ]
 
+        random_seed = generate_random_seed()
+
         body = json.dumps({
             "text_prompts": (
                 [{ "text": input, "weight": 1.0 }]
@@ -127,7 +129,7 @@ def generate_image_in_bedrock(input, style_preset):
             "width": 832,
             "height": 1216,
             "cfg_scale": 7,
-            "seed": 0,
+            "seed": random_seed,
             "steps": 50,
             "style_preset": style_preset
         })
@@ -160,3 +162,7 @@ def generate_image_in_bedrock(input, style_preset):
         print(f"generate_image_in_bedrock error = {e}")
     
     return result
+
+def generate_random_seed():
+    random_seed = randrange(500000)
+    return random_seed
