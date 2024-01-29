@@ -17,7 +17,7 @@ def handler(event, context):
             input = event["queryStringParameters"]["input"]
             if input:
                 style_preset = event["queryStringParameters"]["style_preset"] if "style_preset" in event["queryStringParameters"] else "photographic"
-                base64_image = get_ideal_girl_in_bedrock(input, style_preset)
+                base64_image = generate_image_in_bedrock(input, style_preset)
                 if base64_image:
                     response = {
                         "statusCode": 200,
@@ -29,7 +29,7 @@ def handler(event, context):
     print(f"response = {response}")
     return response
 
-def get_ideal_girl_in_bedrock(input, style_preset):
+def generate_image_in_bedrock(input, style_preset):
     result = None
 
     try:
@@ -157,6 +157,6 @@ def get_ideal_girl_in_bedrock(input, style_preset):
             result = base64_image
         
     except Exception as e:
-        print(f"get_ideal_girl_in_bedrock error = {e}")
+        print(f"generate_image_in_bedrock error = {e}")
     
     return result
