@@ -4,6 +4,8 @@ This project intends to use aws cdk with aws bedrock to make API with generative
 
 The model uses amazon titan and stable diffusion
 
+Web ui uses streamlit
+
 documentation: <https://documenter.getpostman.com/view/3827865/2s9YyqjNqN>
 
 grammarly api url: <https://ii5m356p5f.execute-api.us-east-1.amazonaws.com/prod>
