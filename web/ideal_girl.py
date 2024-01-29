@@ -1,6 +1,13 @@
 import streamlit as st
 import time
+import io
+import base64
+from PIL import Image
 from services.ideal_girl_api import ideal_girl_api
+
+def convert_base64_image_to_local_file(base64_image):
+    img = Image.open(io.BytesIO(base64.decodebytes(bytes(base64_image, "utf-8"))))
+    img.save('image.png')
 
 st.title("Ideal Girl")
 
@@ -45,4 +52,6 @@ if submit_button_clicked:
         if base64_image:
             with st.spinner('Loading...'):
                 time.sleep(2)
-                st.image("")
+
+                convert_base64_image_to_local_file(base64_image)
+                st.image("image.png")
