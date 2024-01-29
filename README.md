@@ -2,7 +2,7 @@
 
 generative-ai
 
-documentation: <>
+documentation: <https://documenter.getpostman.com/view/3827865/2s9YyqjNqN>>
 
 api url: <>
 
