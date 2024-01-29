@@ -2,7 +2,7 @@
 
 generative-ai
 
-documentation: <https://documenter.getpostman.com/view/3827865/2s9YyqjNqN>>
+documentation: <https://documenter.getpostman.com/view/3827865/2s9YyqjNqN>
 
 grammarly api url: <https://ii5m356p5f.execute-api.us-east-1.amazonaws.com/prod>
 
