@@ -73,6 +73,9 @@ $ cdk --help
 ```
 
 ```zsh
+// install dependencies
+$ pip install -r requirements.txt
+
 // open grammarly web
 $ cd web
 $ streamlit run grammarly.py
