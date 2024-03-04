@@ -1,8 +1,8 @@
 # generative-ai
 
-This project intends to use aws cdk with aws bedrock to make API with generative ai, there are two API for text-to-text and text-to-image
+This project intends to use aws cdk with aws bedrock to make API with generative ai, there are two API for `text-to-text` and `text-to-image`
 
-The model uses amazon titan and stable diffusion
+The model uses `amazon titan text express v1` and `stable diffusion XL 1.0`
 
 Web ui uses streamlit
 
