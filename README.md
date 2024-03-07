@@ -78,13 +78,12 @@ $ cdk --help
 
 ```zsh
 // install dependencies
+$ cd web
 $ pip install -r requirements.txt
 
 // open grammarly web
-$ cd web
 $ streamlit run grammarly.py
 
 // open ideal girl web
-$ cd web
 $ streamlit run ideal_girl.py
 ```
