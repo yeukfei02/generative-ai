@@ -8,10 +8,10 @@ st.write("")
 grid_width = st.number_input(
     "Select Grid Width", min_value=1, max_value=5, value=3)
 
+urls = get_ideal_girl_api()
+
 
 def show_images_grid():
-    urls = get_ideal_girl_api()
-
     groups = []
 
     for i in range(0, len(urls), grid_width):
