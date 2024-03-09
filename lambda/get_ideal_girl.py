@@ -50,7 +50,7 @@ def get_presigned_url():
                             'Bucket': bucket,
                             'Key': key
                         },
-                        ExpiresIn=86400
+                        ExpiresIn=604800
                     )
                     urls.append(url)
     except Exception as e:

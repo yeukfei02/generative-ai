@@ -18,6 +18,8 @@ grammarly web url: <https://generative-ai-grammarly.streamlit.app>
 
 ideal-girl web url: <https://generative-ai-ideal-girl.streamlit.app>
 
+ideal-girl-listing web url: <>
+
 ## Requirement
 
 - install python (v3.12.1)
@@ -88,4 +90,7 @@ $ streamlit run grammarly.py
 
 // open ideal girl web
 $ streamlit run ideal_girl.py
+
+// open ideal girl listing web
+$ streamlit run ideal_girl_listing.py
 ```
