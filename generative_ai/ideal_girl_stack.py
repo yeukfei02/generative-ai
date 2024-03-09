@@ -3,6 +3,7 @@ from aws_cdk import (
     Duration,
     RemovalPolicy,
     Stack,
+    aws_s3 as _s3,
     aws_lambda as _lambda,
     aws_apigateway as _apigateway
 )
@@ -21,19 +22,53 @@ class IdealGirlStack(Stack):
         self.create_infra()
 
     def create_infra(self):
+        # create s3 bucket
+        self.create_s3_bucket()
+
+        # create ideal girl api
+        self.create_ideal_girl_api()
+
+        # create get ideal girl api
+        self.create_get_ideal_girl_image_api()
+
+    def create_s3_bucket(self):
+        _s3.Bucket(
+            self,
+            "GenerativeAIIdealGirlBucket",
+            bucket_name="ideal-girl",
+            removal_policy=RemovalPolicy.RETAIN
+        )
+
+    def create_ideal_girl_api(self):
         # create lambda layer
-        lambda_layer = self.create_lambda_layer()
+        lambda_layer = self.create_lambda_layer(
+            "GenerativeAIIdealGirlLambdaLayer")
 
         # create lambda
-        lambda_func = self.create_lambda(lambda_layer)
+        lambda_func = self.create_lambda(
+            "GenerativeAIIdealGirlLambdaFunc", "generative-ai-ideal-girl", "ideal_girl.handler", lambda_layer)
 
         # create api gateway
-        self.create_api_gateway(lambda_func)
+        self.create_api_gateway(
+            "GenerativeAIIdealGirlApiGateway", lambda_func, 'ideal_girl')
 
-    def create_lambda_layer(self):
+    def create_get_ideal_girl_image_api(self):
+        # create lambda layer
+        lambda_layer = self.create_lambda_layer(
+            "GenerativeAIGetIdealGirlLambdaLayer")
+
+        # create lambda
+        lambda_func = self.create_lambda(
+            "GenerativeAIGetIdealGirlLambdaFunc", "generative-ai-get-ideal-girl", "get_ideal_girl.handler", lambda_layer)
+
+        # create api gateway
+        self.create_api_gateway(
+            "GenerativeAIGetIdealGirlApiGateway", lambda_func, 'get_ideal_girl')
+
+    def create_lambda_layer(self, id):
         lambda_layer = _lambda.LayerVersion(
             self,
-            "GenerativeAIIdealGirlLambdaLayer",
+            id,
             code=_lambda.Code.from_asset("lambda/layer"),
             compatible_runtimes=[_lambda.Runtime.PYTHON_3_12],
             compatible_architectures=[_lambda.Architecture.ARM_64],
@@ -41,15 +76,15 @@ class IdealGirlStack(Stack):
         )
         return lambda_layer
 
-    def create_lambda(self, lambda_layer):
+    def create_lambda(self, id, function_name, handler, lambda_layer):
         lambda_func = _lambda.Function(
             self,
-            "GenerativeAIIdealGirlLambdaFunc",
-            function_name="generative-ai-ideal-girl",
+            id,
+            function_name=function_name,
             runtime=_lambda.Runtime.PYTHON_3_12,
             memory_size=1000,
             code=_lambda.Code.from_asset("lambda"),
-            handler="ideal_girl.handler",
+            handler=handler,
             architecture=_lambda.Architecture.ARM_64,
             timeout=Duration.minutes(5),
             tracing=_lambda.Tracing.ACTIVE,
@@ -65,10 +100,10 @@ class IdealGirlStack(Stack):
 
         return lambda_func
 
-    def create_api_gateway(self, lambda_func):
+    def create_api_gateway(self, id, lambda_func, type):
         api_gateway = _apigateway.LambdaRestApi(
             self,
-            "GenerativeAIIdealGirlApiGateway",
+            id,
             handler=lambda_func,
             default_cors_preflight_options=_apigateway.CorsOptions(
                 allow_origins=_apigateway.Cors.ALL_ORIGINS,
@@ -86,7 +121,11 @@ class IdealGirlStack(Stack):
         )
 
         api = api_gateway.root.add_resource("generative-ai")
-        api.add_method("GET") # GET /generative-ai
+        api.add_method("GET")  # GET /generative-ai
 
-        ideal_girl = api.add_resource("ideal-girl")
-        ideal_girl.add_method("GET") # GET /generative-ai/ideal-girl
+        if type == 'ideal_girl':
+            ideal_girl = api.add_resource("ideal-girl")
+            ideal_girl.add_method("GET")  # GET /generative-ai/ideal-girl
+        elif type == 'get_ideal_girl':
+            ideal_girl = api.add_resource("get-ideal-girl")
+            ideal_girl.add_method("GET")  # GET /generative-ai/get-ideal-girl

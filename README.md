@@ -12,6 +12,8 @@ grammarly api url: <https://ii5m356p5f.execute-api.us-east-1.amazonaws.com/prod>
 
 ideal-girl api url: <https://ev6tfvtw2g.execute-api.us-east-1.amazonaws.com/prod>
 
+get-ideal-girl api url: <https://fkfxfygs23.execute-api.us-east-1.amazonaws.com/prod>
+
 grammarly web url: <https://generative-ai-grammarly.streamlit.app>
 
 ideal-girl web url: <https://generative-ai-ideal-girl.streamlit.app>
