@@ -28,8 +28,8 @@ class IdealGirlStack(Stack):
         # create ideal girl api
         self.create_ideal_girl_api()
 
-        # create get ideal girl api
-        self.create_get_ideal_girl_image_api()
+        # create get ideal girls api
+        self.create_get_ideal_girls_image_api()
 
     def create_s3_bucket(self):
         _s3.Bucket(
@@ -52,7 +52,7 @@ class IdealGirlStack(Stack):
         self.create_api_gateway(
             "GenerativeAIIdealGirlApiGateway", lambda_func, 'ideal_girl')
 
-    def create_get_ideal_girl_image_api(self):
+    def create_get_ideal_girls_image_api(self):
         # create lambda layer
         lambda_layer = self.create_lambda_layer(
             "GenerativeAIGetIdealGirlsLambdaLayer")
