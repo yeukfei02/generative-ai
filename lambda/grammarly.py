@@ -1,6 +1,7 @@
 import boto3
 import json
 
+
 def handler(event, context):
     print(f"event = {event}")
 
@@ -26,6 +27,7 @@ def handler(event, context):
     print(f"response = {response}")
     return response
 
+
 def generate_text_in_bedrock(input):
     result = ""
 
@@ -35,7 +37,7 @@ def generate_text_in_bedrock(input):
         body = json.dumps({
             "inputText": f"Check, format and correct the grammar of the following text: {input}",
             "textGenerationConfig": {
-                "temperature": 0,  
+                "temperature": 0,
                 "topP": 0.9,
                 "maxTokenCount": 2000,
                 "stopSequences": []
@@ -43,7 +45,7 @@ def generate_text_in_bedrock(input):
         })
 
         response = client.invoke_model(
-            body=body, 
+            body=body,
             modelId="amazon.titan-text-express-v1",
             accept='application/json',
             contentType='application/json'
@@ -64,8 +66,8 @@ def generate_text_in_bedrock(input):
                     result += output_text
         else:
             raise RuntimeError(f"response_body_error = {response_body_error}")
-        
+
     except Exception as e:
         print(f"generate_text_in_bedrock error = {e}")
-    
+
     return result
