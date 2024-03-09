@@ -18,7 +18,7 @@ grammarly web url: <https://generative-ai-grammarly.streamlit.app>
 
 ideal-girl web url: <https://generative-ai-ideal-girl.streamlit.app>
 
-ideal-girl-listing web url: <>
+ideal-girl-listing web url: <https://generative-ai-ideal-girl-listing.streamlit.app>
 
 ## Requirement
 
