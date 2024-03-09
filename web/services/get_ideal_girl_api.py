@@ -5,9 +5,9 @@ def get_ideal_girl_api():
     result = None
 
     try:
-        root_url = "https://fkfxfygs23.execute-api.us-east-1.amazonaws.com/prod"
+        root_url = "https://edw2m22scb.execute-api.us-east-1.amazonaws.com/prod"
 
-        response = requests.get(f"{root_url}/generative-ai/get-ideal-girl")
+        response = requests.get(f"{root_url}/generative-ai/get-ideal-girls")
         print(f"response = {response}")
 
         if response:

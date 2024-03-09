@@ -55,15 +55,15 @@ class IdealGirlStack(Stack):
     def create_get_ideal_girl_image_api(self):
         # create lambda layer
         lambda_layer = self.create_lambda_layer(
-            "GenerativeAIGetIdealGirlLambdaLayer")
+            "GenerativeAIGetIdealGirlsLambdaLayer")
 
         # create lambda
         lambda_func = self.create_lambda(
-            "GenerativeAIGetIdealGirlLambdaFunc", "generative-ai-get-ideal-girl", "get_ideal_girl.handler", lambda_layer)
+            "GenerativeAIGetIdealGirlsLambdaFunc", "generative-ai-get-ideal-girls", "get_ideal_girls.handler", lambda_layer)
 
         # create api gateway
         self.create_api_gateway(
-            "GenerativeAIGetIdealGirlApiGateway", lambda_func, 'get_ideal_girl')
+            "GenerativeAIGetIdealGirlsApiGateway", lambda_func, 'get_ideal_girls')
 
     def create_lambda_layer(self, id):
         lambda_layer = _lambda.LayerVersion(
@@ -126,6 +126,6 @@ class IdealGirlStack(Stack):
         if type == 'ideal_girl':
             ideal_girl = api.add_resource("ideal-girl")
             ideal_girl.add_method("GET")  # GET /generative-ai/ideal-girl
-        elif type == 'get_ideal_girl':
-            ideal_girl = api.add_resource("get-ideal-girl")
-            ideal_girl.add_method("GET")  # GET /generative-ai/get-ideal-girl
+        elif type == 'get_ideal_girls':
+            ideal_girl = api.add_resource("get-ideal-girls")
+            ideal_girl.add_method("GET")  # GET /generative-ai/get-ideal-girls
