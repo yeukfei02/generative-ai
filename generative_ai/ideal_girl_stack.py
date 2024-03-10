@@ -127,5 +127,6 @@ class IdealGirlStack(Stack):
             ideal_girl = api.add_resource("ideal-girl")
             ideal_girl.add_method("GET")  # GET /generative-ai/ideal-girl
         elif type == 'get_ideal_girls':
-            ideal_girl = api.add_resource("get-ideal-girls")
-            ideal_girl.add_method("GET")  # GET /generative-ai/get-ideal-girls
+            get_ideal_girls = api.add_resource("get-ideal-girls")
+            # GET /generative-ai/get-ideal-girls
+            get_ideal_girls.add_method("GET")
