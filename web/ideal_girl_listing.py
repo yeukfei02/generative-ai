@@ -1,5 +1,5 @@
 import streamlit as st
-from services.get_ideal_girl_api import get_ideal_girl_api
+from services.get_ideal_girls_api import get_ideal_girls_api
 
 st.title("Ideal Girl Listing")
 
@@ -8,7 +8,7 @@ st.write("")
 grid_width = st.number_input(
     "Select Grid Width", min_value=1, max_value=5, value=3)
 
-urls = get_ideal_girl_api()
+urls = get_ideal_girls_api()
 
 
 def show_images_grid():

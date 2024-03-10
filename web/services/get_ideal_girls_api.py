@@ -1,7 +1,7 @@
 import requests
 
 
-def get_ideal_girl_api():
+def get_ideal_girls_api():
     result = None
 
     try:
@@ -19,6 +19,6 @@ def get_ideal_girl_api():
                 if urls:
                     result = urls
     except Exception as e:
-        print(f"get_ideal_girl_api error = {e}")
+        print(f"get_ideal_girls_api error = {e}")
 
     return result

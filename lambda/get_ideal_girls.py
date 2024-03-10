@@ -41,7 +41,11 @@ def get_presigned_url():
         if response:
             contents = response["Contents"]
             if contents:
-                for item in contents:
+                sorted_contents = sorted(
+                    contents, key=lambda item: item.get("LastModified"), reverse=True)
+                print(f"sorted_contents = {sorted_contents}")
+
+                for item in sorted_contents:
                     key = item["Key"]
 
                     url = client.generate_presigned_url(
