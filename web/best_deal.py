@@ -1,14 +1,18 @@
 import streamlit as st
 import time
 from services.best_deal_api import best_deal_api
+from services.countries_api import countries_api
 
 st.title("Best deal")
 
 st.write("")
 
-location = st.text_input(
+countries = countries_api()
+
+location = st.selectbox(
     label="Location",
-    placeholder="Enter location"
+    placeholder="Select location",
+    options=countries
 )
 
 timeline = st.selectbox(
