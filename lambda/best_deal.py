@@ -36,8 +36,8 @@ def generate_text_in_bedrock(location, timeline):
         client = boto3.client(service_name='bedrock-runtime')
 
         body = json.dumps({
-            "prompt": f"Generate {location}'s best and hot deals for {timeline}, get the data from Google search and extract the insights, and create a summary at the end.",
-            "temperature": 0.7,
+            "prompt": f"Generate {location}'s best and hot deals for {timeline}, get data from Google search and extract the insights into bullet points, and create a summary at the end.",
+            "temperature": 0.3,
             "top_p": 0.9,
             "max_gen_len": 800,
         })
