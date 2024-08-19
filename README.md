@@ -2,19 +2,27 @@
 
 This project intends to use aws cdk with aws bedrock to make API with generative ai, there are two API for `text-to-text` and `text-to-image`
 
-The model uses `amazon titan text express v1` and `stable diffusion XL 1.0`
+The model uses `amazon titan text express v1`, `meta llama3 8b-instruct v1.0` and `stable diffusion XL 1.0`
 
 Web ui uses streamlit
 
 documentation: <https://documenter.getpostman.com/view/3827865/2s9YyqjNqN>
 
+api:
+
 grammarly api url: <https://ii5m356p5f.execute-api.us-east-1.amazonaws.com/prod>
+
+best-deal api url: <https://j9pinsyob3.execute-api.us-east-1.amazonaws.com/prod>
 
 ideal-girl api url: <https://ev6tfvtw2g.execute-api.us-east-1.amazonaws.com/prod>
 
 get-ideal-girls api url: <https://edw2m22scb.execute-api.us-east-1.amazonaws.com/prod>
 
+web:
+
 grammarly web url: <https://generative-ai-grammarly.streamlit.app>
+
+best-deal web url: <https://generative-ai-best-deal.streamlit.app>
 
 ideal-girl web url: <https://generative-ai-ideal-girl.streamlit.app>
 
@@ -87,6 +95,9 @@ $ pip install -r requirements.txt
 
 // open grammarly web
 $ streamlit run grammarly.py
+
+// open best_deal web
+$ streamlit run best_deal.py
 
 // open ideal girl web
 $ streamlit run ideal_girl.py

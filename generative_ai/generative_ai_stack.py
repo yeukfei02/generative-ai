@@ -3,6 +3,7 @@ from aws_cdk import (
     Stack
 )
 from generative_ai.grammarly_stack import GrammarlyStack
+from generative_ai.best_deal_stack import BestDealStack
 from generative_ai.ideal_girl_stack import IdealGirlStack
 from helper.helper import get_env
 
@@ -15,7 +16,12 @@ class GenerativeAiStack(Stack):
         env = get_env()
 
         # GrammarlyStack
-        GrammarlyStack(self, "GrammarlyStack", stack_name="grammarly-stack", env=env)
+        GrammarlyStack(self, "GrammarlyStack",
+                       stack_name="grammarly-stack", env=env)
 
+        # BestDealStack
+        BestDealStack(self, "BestDealStack",
+                      stack_name="best-deal-stack", env=env)
         # IdealGirlStack
-        IdealGirlStack(self, "IdealGirlStack", stack_name="ideal-girl-stack", env=env)
+        IdealGirlStack(self, "IdealGirlStack",
+                       stack_name="ideal-girl-stack", env=env)
