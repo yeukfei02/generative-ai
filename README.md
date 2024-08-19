@@ -2,7 +2,7 @@
 
 This project intends to use aws cdk with aws bedrock to make API with generative ai, there are two API for `text-to-text` and `text-to-image`
 
-The model uses `amazon titan text express v1`, `meta llama3 8b-instruct v1.0` and `stable diffusion XL 1.0`
+The model uses `amazon titan text express v1`, `meta llama3 8b-instruct v1.0` and `stable diffusion XL v1.0`
 
 Web ui uses streamlit
 
